@@ -60,6 +60,8 @@ console.log(tasks);
 
 
 const ul = document.querySelector("#listTasks");
+const input = document.querySelector("#inputTask");
+const form = document.querySelector("#formTasks");
 
 function renderTasks(taskList){
     ul.innerHTML = '';
@@ -71,6 +73,13 @@ function renderTasks(taskList){
 
 } 
 renderTasks(tasks);
-renderTasks(tasks);
+form.addEventListener('submit', function(e){
+    e.preventDefault(); //предотвратить действие по умолчанию
+    const text = input.value;
+    addNewTask(text);
+    renderTasks(tasks);
+    input.value = '';
+})
 
-//1.Цикл проходит по массиву задач. Для каждой задачи создаётся li, в него кладётся текст, и li добавляется в ul.
+
+//1.rогда пользователь вводит в поле задачу и нажимает кнопку то мы добавляем наш текст в наш массив
