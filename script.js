@@ -31,9 +31,7 @@ function addNewTask(taskName){
     tasks.push(task);
     return task;
 } 
-console.log(addNewTask(taskName));
-console.log(tasks);
- 
+console.log(addNewTask(taskName)); 
 
 function deleteTask(id){
     let index = -1;
@@ -50,15 +48,6 @@ function deleteTask(id){
     
     tasks.splice(index,1);
 }
-// console.log(deleteTask())
-
-const newTask = addNewTask('Посмотреть фильм');
-console.table(tasks);
-
-deleteTask(newTask.id);
-console.log(tasks);
-
-
 const ul = document.querySelector("#listTasks");
 const input = document.querySelector("#inputTask");
 const form = document.querySelector("#formTasks");
@@ -75,11 +64,16 @@ function renderTasks(taskList){
 renderTasks(tasks);
 form.addEventListener('submit', function(e){
     e.preventDefault(); //предотвратить действие по умолчанию
-    const text = input.value;
+    const text = input.value.trim();
+    if(text === ''){
+        return;    
+    }
     addNewTask(text);
     renderTasks(tasks);
     input.value = '';
+    console.log(text)
 })
-
+const stringS = " "
+if (stringS.trim() == "") { console.log('да') } else { console.log('нет') }
 
 //1.rогда пользователь вводит в поле задачу и нажимает кнопку то мы добавляем наш текст в наш массив
